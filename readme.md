@@ -7,10 +7,6 @@
 ```properties
 /java: 	java版源码
 /c++:	c++版源码
-/tool:	已打包的工具
-/tool/linux:	linux平台java版本工具
-/tool/windows/c++:	windows平台c++版本工具
-/tool/windows/java:	windows平台java版本工具
 ```
 
 
