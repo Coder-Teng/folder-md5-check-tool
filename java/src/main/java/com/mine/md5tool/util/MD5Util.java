@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 import org.apache.commons.codec.binary.Hex;
 
 public class MD5Util {
-	public static String getMD5(File file) {
+	public static String calculateMD5OfFile(File file) {
 		FileInputStream fileInputStream = null;
 		try {
 			MessageDigest MD5 = MessageDigest.getInstance("MD5");
