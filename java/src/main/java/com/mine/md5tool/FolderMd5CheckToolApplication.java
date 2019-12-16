@@ -27,10 +27,12 @@ public class FolderMd5CheckToolApplication {
         Set<String> excludedPaths = paramHandleRet.obj.excludedPaths;
         Md5FolderTool tool = new Md5FolderTool ( );
         if (AppDefine.RUNMODE_READANDRECORDMD5_NUM.equalsIgnoreCase ( runMode ) ||
-                AppDefine.RUNMODE_READANDRECORDMD5_STR.equalsIgnoreCase ( runMode )) { // 读取文件夹下文件、计算md5并保存
+                AppDefine.RUNMODE_READANDRECORDMD5_STR.equalsIgnoreCase ( runMode )) {
+            // 读取文件夹下文件、计算md5并保存
             ret = tool.readAndRecordMd5 ( standardMd5Path , folderPath , excludedPaths );
         } else if (AppDefine.RUNMODE_COMPAREFOLDERMD5_NUM.equalsIgnoreCase ( runMode ) ||
-                AppDefine.RUNMODE_COMPAREFOLDERMD5_STR.equalsIgnoreCase ( runMode )) { // 用给定的 md5 记录文件,比较文件夹下文件的md5
+                AppDefine.RUNMODE_COMPAREFOLDERMD5_STR.equalsIgnoreCase ( runMode )) {
+            // 用给定的 md5 记录文件,比较文件夹下文件的md5
             ret = tool.compareFolderMd5 ( standardMd5Path , folderPath , excludedPaths );
         } else {
             ret = new RetBean ( -3 , "Incorrect RunMode: " + runMode );

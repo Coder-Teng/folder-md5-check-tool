@@ -32,7 +32,7 @@ public class FileUtil {
         if (f.exists ( ) == false) {
             return;
         }
-        boolean excluded = CheckForExclusion ( rootPath , f.getAbsolutePath ( ) , excludedPaths );
+        boolean excluded = checkForExclusion ( rootPath , f.getAbsolutePath ( ) , excludedPaths );
         if (excluded == true) {
             return;
         }
@@ -47,7 +47,7 @@ public class FileUtil {
         }
     }
 
-    private static boolean CheckForExclusion(String rootPath , String subPath , Set<String> excludedPaths) {
+    private static boolean checkForExclusion(String rootPath , String subPath , Set<String> excludedPaths) {
         if (excludedPaths == null || excludedPaths.isEmpty ( )) {
             return false;
         }
