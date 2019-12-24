@@ -22,7 +22,7 @@ FolderPath: 要扫描或者检查的文件夹路径。
 ExcludedPaths: 需要排除的子目录，可以是完整路径也可是相对于FolderPath的相对路径；各个目录间用||分割。
 ```
 
-**1、扫描文件夹下文件并记录md5**。
+### 1、扫描文件夹下文件并记录md5。
 
 - 从指定txt中读取参数方式 调用。
 
@@ -39,17 +39,29 @@ ExcludedPaths: 需要排除的子目录，可以是完整路径也可是相对�
   ```pro
   RunMode=1
   StandardMd5Path=standard-md5.txt
-  FolderPath=D:/test
-  ExcludedPaths=新建文件夹||D:/test/1111111||新建文本文档.txt
+  FolderPath=/home
+  ExcludedPaths=test||/home/test
   ```
 
 - 从控制台读取参数方式调用。
 
   ```cmd
-  java -Dfile.encoding=utf-8 -jar folder-md5-check-tool-1.0.0.jar console 1 standard-md5.txt D:/test 新建文件夹||D:/test/1111111||新建文本文档.txt
+  java -Dfile.encoding=utf-8 -jar folder-md5-check-tool-1.0.0.jar console 1 standard-md5.txt /home test||/home/test
   ```
 
-**2、用给定的md5记录文件,比较文件夹下文件的md5。**
+- 输出示例：
+
+  ```cmd
+  [root@localhost folder-md5-check-tool]# ./folder-md5-check-tool.sh 
+  os=Linux
+  RunMode=1
+  StandardMd5Path=standard-md5.txt
+  FolderPath=/home
+  ExcludedPaths=[test, /home/test]
+  Done, records in /home/folder-md5-check-tool/standard-md5.txt
+  ```
+
+### 2、用给定的md5记录文件,比较文件夹下文件的md5。
 
 - 从指定txt中读取参数方式 调用，检查结果输出在控制台以及当前目录下的checkResult_all.csv和
   checkResult_incorrect.csv文件中。
@@ -63,13 +75,29 @@ ExcludedPaths: 需要排除的子目录，可以是完整路径也可是相对�
   ```pro
   RunMode=2
   StandardMd5Path=standard-md5.txt
-  FolderPath=D:/test
-  ExcludedPaths=新建文件夹||D:/test/1111111||新建文本文档.txt
+  FolderPath=/home
+  ExcludedPaths=test||/home/test
   ```
 
 - 从控制台读取参数方式调用。
 
   ```cmd
-  java -Dfile.encoding=utf-8 -jar folder-md5-check-tool-1.0.0.jar console 2 standard-md5.txt D:/test 新建文件夹||D:/test/1111111||新建文本文档.txt
+  java -Dfile.encoding=utf-8 -jar folder-md5-check-tool-1.0.0.jar console 2 standard-md5.txt /home test||/home/test
   ```
 
+- 输出示例：
+
+  ```cmd
+  [root@localhost folder-md5-check-tool]# ./folder-md5-check-tool.sh 
+  os=Linux
+  RunMode=2
+  StandardMd5Path=standard-md5.txt
+  FolderPath=/home
+  ExcludedPaths=[test, /home/test]
+  Done, some files are incorrect, Details in /home/folder-md5-check-tool/checkResult_incorrect.csv,/home/folder-md5-check-tool/checkResult_all.csv
+  ```
+  
+  ```properties
+  checkResult_incorrect.csv: 保存异常文件或文件夹信息
+  checkResult_all.csv:所有文件的检查结果
+  ```
