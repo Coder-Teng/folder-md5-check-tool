@@ -93,11 +93,11 @@ public class Md5FolderTool {
             md5Arr[1] = md5;
         }
 
-        String checkRetOfAllFilesPath = System.getProperty ( "user.dir" ) + File.separatorChar
-                + "checkResult_all.csv";
         String checkRetOfIncorrectFilesPath = System.getProperty ( "user.dir" ) + File.separatorChar
                 + "checkResult_incorrect.csv";
-        File checkRetOfIncorrectFiles = new File ( checkRetOfAllFilesPath );
+        String checkRetOfAllFilesPath = System.getProperty ( "user.dir" ) + File.separatorChar
+                + "checkResult_all.csv";
+        File checkRetOfIncorrectFiles = new File ( checkRetOfIncorrectFilesPath );
         File checkRetOfAllFiles = new File ( checkRetOfAllFilesPath );
         if (checkRetOfIncorrectFiles.exists ( ) && !checkRetOfIncorrectFiles.delete ( )) {
             return new RetBean ( -4 , "Error, file is occupied, " + checkRetOfIncorrectFiles.getAbsolutePath ( ) );
